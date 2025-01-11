@@ -1,0 +1,27 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  build_extract: 
+    cmds:
+      - echo "Building..."
+      - go build ./cmd/mod_extract
+    silent: true
+  
+  build:
+    cmds:
+      - task: build_extract
+
+  run:
+    cmds:
+      - task: build
+      - ./mod_extract
