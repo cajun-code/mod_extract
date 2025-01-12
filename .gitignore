@@ -23,4 +23,7 @@ go.work.sum
 
 # env file
 .env
-mod_extract
+#mod_extract
+dist
+mod_extract.app
+.DS_Store

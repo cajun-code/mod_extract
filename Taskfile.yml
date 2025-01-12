@@ -14,7 +14,7 @@ tasks:
   build_extract: 
     cmds:
       - echo "Building..."
-      - go build ./cmd/mod_extract
+      - go build -o ./dist/mod_extract ./cmd/mod_extract
     silent: true
   
   build:
@@ -24,4 +24,11 @@ tasks:
   run:
     cmds:
       - task: build
-      - ./mod_extract
+      - ./dist/mod_extract
+
+  release:
+    cmds:
+      - echo "Releasing..."
+      - fyne package -os darwin --appID com.github.cajun-code.mod_extract --icon icon.png --src ./cmd/mod_extract
+      - echo "Done."
+    silent: true
